@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require_relative "../lib/otsort.rb"
+
+bass = @samples.select{|s| s.type == "bass"}
+drums = @samples.select{|s| s.type == "drums"}
+
+table = Table.new ["drum","scale","bass","scale","transition"]
+drums.each do |d|
+  bass.each do |b|
+    table << [d.file, d.scale, b.file, b.scale, d.transition(b)] if d.harmonic? b
+  end
+end
+table.print

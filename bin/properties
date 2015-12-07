@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require_relative "../lib/otsort.rb"
+table = Table.new @samples.first.property_names + ["scale"]
+@samples.each do |s|
+  table << s.properties + [s.scale]
+end
+table.print

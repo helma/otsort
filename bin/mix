@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require_relative "../lib/otsort.rb"
+
+bass = @samples.select{|s| s.type == "bass"}
+drums = @samples.select{|s| s.type == "drums"}
+
+table = Table.new ["file","key"] + bass.collect{|s| s.scale}
+@samples.each do |b1|
+  row = [b1.file , b1.scale]
+  bass.each do |b2|
+    #s = "#{b1.interval(b2)} "
+    s = "same" if b1.same? b2
+    s = "energy" if b1.energy_boost? b2
+    s = "relative" if b1.relative? b2
+    s = "fifth" if b1.fifth? b2
+    row << s
+  end
+  table << row
+end
+
+table.print

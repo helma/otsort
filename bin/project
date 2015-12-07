@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require_relative "../lib/otsort.rb"
+
+drums = @project_samples.select{|f| @project_samples.index(f).modulo(2) == 0}
+basses = @project_samples.select{|f| @project_samples.index(f).modulo(2) == 1}
+table = Table.new ["","drums","","bass"]
+drums.each_with_index do |d,i|
+  table << [2*i, d, 2*i+1, basses[i]]
+end
+table.print

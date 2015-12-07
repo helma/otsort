@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require_relative "../lib/otsort.rb"
+
+bass = @samples.select{|s| s.type == "bass"}
+drums = @samples.select{|s| s.type == "drums"}
+
+g = Graph.new bass
+g.display
+g = Graph.new drums
+g.display

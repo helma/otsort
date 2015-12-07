@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require_relative "../lib/otsort.rb"
+
+puts ARGV.inspect
+#rename ARGV.first, ARGV.last

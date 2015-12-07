@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require_relative "../lib/otsort.rb"
+
+drums = @project_samples.select{|f| @project_samples.index(f).modulo(2) == 0}
+basses = @project_samples.select{|f| @project_samples.index(f).modulo(2) == 1}
+basses.each do |d|
+  puts d
+  #puts `cd #{AUDIO_DIR}; mplayer #{drums.join " "}`
+  `cd #{AUDIO_DIR}; mplayer #{d}`
+end
+#puts `mv -iv #{@unused_samples.collect{|f| File.join AUDIO_DIR, f}.join " "} #{File.join AUDIO_DIR, "bak"}/` unless @unused_samples.empty
